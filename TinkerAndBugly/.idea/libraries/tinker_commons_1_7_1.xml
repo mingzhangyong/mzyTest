@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="tinker-commons-1.7.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.tencent.tinker/tinker-commons/1.7.1/569cf0d76ef4a83a4abb2b626319c7341d03f5f9/tinker-commons-1.7.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.tencent.tinker/tinker-commons/1.7.1/c65901cec264d9ac2440f5da36b613876e792031/tinker-commons-1.7.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

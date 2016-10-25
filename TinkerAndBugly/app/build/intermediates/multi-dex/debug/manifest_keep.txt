@@ -1,0 +1,8 @@
+-keep class com.work.zhangyong.tinkerandbugly.app.SampleApplication {
+    <init>();
+    void attachBaseContext(android.content.Context);
+}
+-keep class com.work.zhangyong.tinkerandbugly.app.MainActivity { <init>(); }
+-keep class com.tencent.tinker.lib.service.TinkerPatchService { <init>(); }
+-keep class com.tencent.tinker.lib.service.TinkerPatchService$InnerService { <init>(); }
+-keep class com.tencent.tinker.lib.service.DefaultTinkerResultService { <init>(); }

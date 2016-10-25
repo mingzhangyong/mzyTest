@@ -1,0 +1,101 @@
+-injars 'D:\mzy_test\mzyTest\TinkerAndBugly\app\build\intermediates\transforms\jarMerging\debug\jars\1\1f\combined.jar'
+-outjars 'D:\mzy_test\mzyTest\TinkerAndBugly\app\build\intermediates\multi-dex\debug\componentClasses.jar'
+
+-libraryjars 'C:\Users\zhangyong\AppData\Local\Android\sdk\build-tools\23.0.2\lib\shrinkedAndroid.jar'
+
+-forceprocessing
+-dontoptimize
+-dontobfuscate
+-dontusemixedcaseclassnames
+-dontpreverify
+-dontnote **
+-dontwarn **
+-printconfiguration 'D:\mzy_test\mzyTest\TinkerAndBugly\app\build\intermediates\multi-dex\debug\components.flags'
+
+
+-keep class com.work.zhangyong.tinkerandbugly.app.SampleApplication {
+    <init>();
+    void attachBaseContext(android.content.Context);
+}
+
+-keep class com.work.zhangyong.tinkerandbugly.app.MainActivity {
+    <init>();
+}
+
+-keep class com.tencent.tinker.lib.service.TinkerPatchService {
+    <init>();
+}
+
+-keep class com.tencent.tinker.lib.service.TinkerPatchService$InnerService {
+    <init>();
+}
+
+-keep class com.tencent.tinker.lib.service.DefaultTinkerResultService {
+    <init>();
+}
+
+# you can copy the tinker keep rule at
+# build/intermediates/tinker_intermediates/tinker_multidexkeep.pro
+-keep class com.tencent.tinker.loader.** {
+    <fields>;
+    <methods>;
+}
+
+-keep class tinker.sample.android.app.SampleApplication {
+    <fields>;
+    <methods>;
+}
+
+-keep public class * extends com.tencent.tinker.loader.app.ApplicationLifeCycle {
+    <fields>;
+    <methods>;
+}
+
+-keep public class * extends com.tencent.tinker.loader.TinkerLoader {
+    <fields>;
+    <methods>;
+}
+
+-keep public class * extends com.tencent.tinker.loader.app.TinkerApplication {
+    <fields>;
+    <methods>;
+}
+
+# your dex.loader patterns here
+-keep class com.tencent.tinker.loader.** {
+    <fields>;
+    <methods>;
+}
+
+-keep class com.work.zhangyong.tinkerandbugly.app.SampleApplication {
+    <fields>;
+    <methods>;
+}
+
+-keep class com.work.zhangyong.tinkerandbugly.app.BaseBuildInfo {
+    <fields>;
+    <methods>;
+}
+
+-keep public class * extends android.app.Instrumentation {
+    <init>();
+}
+
+-keep public class * extends android.app.Application {
+    <init>();
+    void attachBaseContext(android.content.Context);
+}
+
+-keep public class * extends android.app.backup.BackupAgent {
+    <init>();
+}
+
+-keep public class * extends java.lang.annotation.Annotation {
+    <fields>;
+    <methods>;
+}
+
+-keep class com.android.tools.fd.** {
+    <fields>;
+    <methods>;
+}

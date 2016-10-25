@@ -1,0 +1,1 @@
+int string tinker_test_resource 0x7f020000
