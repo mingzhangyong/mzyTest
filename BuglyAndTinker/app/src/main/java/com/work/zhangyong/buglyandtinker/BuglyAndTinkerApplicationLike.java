@@ -23,7 +23,7 @@ import com.work.zhangyong.buglyandtinker.util.TinkerManager;
  */
 
 @SuppressWarnings("unused")
-@DefaultLifeCycle(application = ".BugLyAndTinkerApplication",
+@DefaultLifeCycle(application = "com.work.zhangyong.buglyandtinker.BuglyAndTinkerApplication",
         flags = ShareConstants.TINKER_ENABLE_ALL,
         loadVerifyFlag = false)
 public class BuglyAndTinkerApplicationLike extends DefaultApplicationLike {
@@ -58,11 +58,16 @@ public class BuglyAndTinkerApplicationLike extends DefaultApplicationLike {
         //installTinker after load multiDex
         //or you can put com.tencent.tinker.** to main dex
         TinkerManager.installTinker(this);
-        CrashReport.initCrashReport(getApplication().getApplicationContext(), "900056991", false);
     }
 
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     public void registerActivityLifecycleCallbacks(Application.ActivityLifecycleCallbacks callback) {
         getApplication().registerActivityLifecycleCallbacks(callback);
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        CrashReport.initCrashReport(getApplication().getApplicationContext(), "900056991", false);
     }
 }

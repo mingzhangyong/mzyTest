@@ -24,3 +24,14 @@
 # here, it is your own keep rules.
 # you must be careful that the class name you write won't be proguard
 # but the tinker class above is OK, we have already keep for you!
+-keep class com.tencent.tinker.loader.** {
+    *;
+}
+
+-keep class com.work.zhangyong.buglyandtinker.BuglyAndTinkerApplication {
+    *;
+}
+
+-keep class com.work.zhangyong.buglyandtinker.BaseBuildInfo {
+    *;
+}

@@ -16,8 +16,13 @@
 
 package com.work.zhangyong.buglyandtinker.util;
 
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Environment;
 import android.os.StatFs;
+import android.provider.Settings;
+import android.telephony.TelephonyManager;
 
 import com.tencent.tinker.loader.shareutil.ShareConstants;
 
@@ -25,6 +30,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
+import java.util.UUID;
 
 /**
  * Created by zhangshaowen on 16/4/7.
@@ -152,5 +159,38 @@ public class Utils {
         } else {
             return src;
         }
+    }
+
+
+
+
+
+    public static int getVersionCode(Context context) {
+        try {
+            PackageInfo manager = context.getPackageManager().getPackageInfo(
+                    context.getPackageName(), 0);
+            return manager.versionCode;
+        } catch (PackageManager.NameNotFoundException e) {
+            return 0;
+        }
+    }
+
+    //获取设备唯一id
+    public static String getUuid(Context context) {
+        UUID uuid;
+        final String androidId = Settings.Secure.getString(
+                context.getContentResolver(), Settings.Secure.ANDROID_ID);
+        try {
+            if (!"9774d56d682e549c".equals(androidId)) {
+                uuid = UUID.nameUUIDFromBytes(androidId.getBytes("utf8"));
+            } else {
+                final String deviceId = (
+                        (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId();
+                uuid = deviceId != null ? UUID.nameUUIDFromBytes(deviceId.getBytes("utf8")) : UUID.randomUUID();
+            }
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
+        }
+        return uuid.toString();
     }
 }
