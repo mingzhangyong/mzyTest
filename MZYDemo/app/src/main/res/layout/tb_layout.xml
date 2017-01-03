@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.work.zhangyong.mzy.divider.TBLayout
+        android:id="@+id/tblayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="120dp"
+                android:gravity="center"
+                android:text="这里是第一页，上滑到第二页"/>
+        </ScrollView>
+
+        <ScrollView
+            android:id="@+id/footer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:gravity="center"
+               android:text="这里是第二页，上滑到第一页 "/>
+        </ScrollView>
+
+    </com.work.zhangyong.mzy.divider.TBLayout>
+
+</LinearLayout>

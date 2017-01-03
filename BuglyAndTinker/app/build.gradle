@@ -31,6 +31,7 @@ def gitSha() {
 
 def javaVersion = JavaVersion.VERSION_1_7
 
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
@@ -47,10 +48,10 @@ android {
     signingConfigs {
         release {
             try {
-                storeFile file("./keystore/release.keystore")
-                storePassword "testres"
-                keyAlias "testres"
-                keyPassword "testres"
+                storeFile file("./keystore/sign.jks")
+                storePassword "512227"
+                keyAlias "mzy"
+                keyPassword "512227"
             } catch (ex) {
                 throw new InvalidUserDataException(ex.toString())
             }
@@ -127,18 +128,18 @@ def bakPath = file("${buildDir}/bakApk/")
  */
 ext {
     //for some reason, you may want to ignore tinkerBuild, such as instant run debug build?
-    tinkerEnabled = true
+    tinkerEnabled = false
 
     //for normal build
     //old apk file to build patch apk
-    tinkerOldApkPath = "${bakPath}/app-debug-1028-15-04-59.apk"
+    tinkerOldApkPath = "${bakPath}/app-release-1118-10-38-50.apk"
     //proguard mapping file to build patch apk
-    tinkerApplyMappingPath = "${bakPath}/"
+    tinkerApplyMappingPath = "${bakPath}/app-release-1118-10-38-50-mapping.txt"
     //resource R.txt to build patch apk, must input if there is resource changed
-    tinkerApplyResourcePath = "${bakPath}/app-debug-1028-15-04-59-R.txt"
+    tinkerApplyResourcePath = "${bakPath}/app-release-1118-10-38-50-R.txt"
 
     //only use for build all flavor, if not, just ignore this field
-    tinkerBuildFlavorDirectory = "${bakPath}/app-1018-17-32-47"
+    tinkerBuildFlavorDirectory = "${bakPath}/"
 }
 
 
@@ -332,7 +333,7 @@ if (buildWithTinker()) {
             /**
              * patch version via packageConfig
              */
-            configField("patchVersion", "1.0")
+            configField("patchVersion", "2.0")
         }
         //or you can add config filed outside, or get meta value from old apk
         //project.tinkerPatch.packageConfig.configField("test1", project.tinkerPatch.packageConfig.getMetaDataFromOldApk("Test"))
@@ -439,27 +440,5 @@ if (buildWithTinker()) {
                 }
             }
         }
-    }
-}
-
-/**
- * 加载签名配置文件
- */
-def loadSigningConfigs() {
-    def Properties props = new Properties()
-    def propFile = file('../mysigning.properties')
-    if (propFile.canRead()) {
-        props.load(new FileInputStream(propFile))
-        if (props != null && props.containsKey('RELEASE_STORE_FILE') && props.containsKey('RELEASE_STORE_PASSWORD') &&
-                props.containsKey('RELEASE_KEY_ALIAS') && props.containsKey('RELEASE_KEY_PASSWORD')) {
-            android.signingConfigs.release.storeFile = file(props['RELEASE_STORE_FILE'])
-            android.signingConfigs.release.storePassword = props['RELEASE_STORE_PASSWORD']
-            android.signingConfigs.release.keyAlias = props['RELEASE_KEY_ALIAS']
-            android.signingConfigs.release.keyPassword = props['RELEASE_KEY_PASSWORD']
-        } else {
-            android.buildTypes.release.signingConfig = null
-        }
-    } else {
-        android.buildTypes.release.signingConfig = null
     }
 }

@@ -8,21 +8,54 @@
     <uses-permission android:name="android.permission.READ_LOGS" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
     <application
         android:name=".BuglyAndTinkerApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="Bugly And Tinker"
+
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:icon="@drawable/m"
+            android:enabled="false"
+            android:label="Bugly And Tinker">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <activity-alias
+            android:name="com.example.changeicondemo.ActivityAlias1"
+            android:enabled="false"
+            android:icon="@drawable/noe"
+            android:label="@string/app_name"
+            android:targetActivity=".MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <activity-alias
+            android:name="com.example.changeicondemo.ActivityAlias2"
+            android:enabled="true"
+            android:icon="@drawable/xx"
+            android:label="@string/app_name"
+            android:targetActivity=".MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+
+
+
+
+
         <service android:name=".service.SampleResultService"
             android:exported="false"/>
     </application>
