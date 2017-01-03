@@ -30,6 +30,8 @@
         <activity android:name=".coordinator.CoordinatorToolbar" />
         <activity android:name=".gallery.GalleryActivity" />
         <activity android:name=".myTest.ImageTest" />
+        <activity android:name=".animator.AnimatorActivity"/>
+        <activity android:name=".animator.AnimatorWidget"/>
     </application>
 
 </manifest>

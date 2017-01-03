@@ -25,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.work.zhangyong.mzydemo.animator.AnimatorActivity;
 import com.work.zhangyong.mzydemo.coordinator.CoordinatorActivityAppBar;
 import com.work.zhangyong.mzydemo.coordinator.CoordinatorActivityFloatingButton;
 import com.work.zhangyong.mzydemo.coordinator.CoordinatorToolbar;
@@ -190,11 +191,17 @@ public class MainActivity extends ToolbarActivity {
                         NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
                         mNotificationManager.notify(0, mBuilder.build());
 
-
+                        break;
                     }
                     case 11:{
                         Intent i = new Intent(MainActivity.this, ImageTest.class);
                         startActivity(i);
+                        break;
+                    }
+                    case 12:{
+                        Intent i = new Intent(MainActivity.this, AnimatorActivity.class);
+                        startActivity(i);
+                        break;
                     }
                 }
             }

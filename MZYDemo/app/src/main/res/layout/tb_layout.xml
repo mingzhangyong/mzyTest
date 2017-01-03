@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.work.zhangyong.mzy.divider.TBLayout
+    <com.work.zhangyong.mzydemo.divider.TBLayout
         android:id="@+id/tblayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -32,6 +32,6 @@
                android:text="这里是第二页，上滑到第一页 "/>
         </ScrollView>
 
-    </com.work.zhangyong.mzy.divider.TBLayout>
+    </com.work.zhangyong.mzydemo.divider.TBLayout>
 
 </LinearLayout>

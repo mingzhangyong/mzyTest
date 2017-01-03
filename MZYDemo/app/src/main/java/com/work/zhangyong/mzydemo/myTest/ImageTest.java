@@ -1,6 +1,9 @@
 package com.work.zhangyong.mzydemo.myTest;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.View;
+import android.widget.EditText;
 
 import com.work.zhangyong.mzydemo.R;
 import com.work.zhangyong.mzydemo.toolbar.ToolbarActivity;
@@ -20,9 +23,28 @@ public class ImageTest extends ToolbarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        final EditText editText = (EditText) findViewById(R.id.edit_set_ratio);
         imageView = (MyImageView) findViewById(R.id.my_test_img);
-        imageView.setRatio(0.2f);
+        editText.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int keyCode, KeyEvent event) {
+
+                if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN) {
+
+                    if (editText.length() == 0) {
+                        hideKeyboard();
+                    } else {
+                        String sRatio = editText.getText().toString();
+                        Float fRatio = new Float(sRatio);
+                        imageView.setRatio(fRatio);
+                        hideKeyboard();
+                    }
+                }
+                return false;
+            }
+        });
+
+
 
        /* ViewGroup.LayoutParams lp = imageView.getLayoutParams();
         int hight = lp.height;
