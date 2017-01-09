@@ -1,0 +1,8 @@
+<view class="sku-container">
+  <block wx:for="{{skus}}" wx:for-item="sku" wx:key="*this">
+    <view class="sku-view">
+        <text>产品名称:{{sku.name}}</text>
+        <text>产品优势:{{sku.adva}}</text>
+    </view>
+  </block>
+</view>
