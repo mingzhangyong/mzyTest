@@ -1,0 +1,16 @@
+<view class="sku-container">
+  <block wx:for="{{skus}}" wx:for-item="sku" wx:key="*this">
+    <view class="sku-view">
+        <view class="view-sku-title">
+            <text class="sku-title">{{sku.name}}</text>
+            <view wx:if="{{sku.related_skus_num > 0}}" class="proxy-to-needs">
+                <text class="tv-zhaoshang">招商中</text>
+                <image class="img-sku-title" src="../../image/proxy_to_needs.png"></image>
+            </view>
+        </view>
+        <text class="sku-other">规格:{{sku.specs}}</text>
+        <text class="sku-other">剂型:{{sku.dosage_form}}</text>
+        <text class="sku-other">厂家:{{sku.factory}}</text>
+    </view>
+  </block>
+</view>

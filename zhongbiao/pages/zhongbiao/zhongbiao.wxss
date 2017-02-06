@@ -1,0 +1,76 @@
+.sku-view{
+  font-size: 22rpx;
+  margin-top: 50rpx;
+   display: flex;
+  flex-direction: column;
+}
+
+.sku-container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 10%;
+    box-sizing: border-box;
+    font-size: 26rpx;
+   font-family:微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu ;
+}
+.sku-title{
+  font-size: 32rpx;
+  color: #323232;
+   font-family:微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu ;
+}
+.sku-other{
+  font-size: 26rpx;
+  color: #323232;
+   font-family:微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu ;
+   margin-top: 18rpx;
+}
+.img-sku-title{
+  width: 25rpx;
+  height: 25rpx;
+}
+.view-sku-title{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.tv-zhaoshang{
+  color: red;
+  font-size: 26rpx;
+  padding-right: 6rpx;
+}
+.proxy-to-needs{
+   display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.gifDemo{
+  height: 120rpx;
+  width: 200rpx;
+}
+.view-get-more{
+   display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 26rpx;
+  justify-content: center;
+}
+.text-get-more{
+  margin-top: 14rpx;
+  margin-left: 12rpx;
+  background: #fff;
+  font-size: 26rpx;
+  }
+  .radio-group{
+    font-size: 26rpx;
+    display: flex;
+    flex-direction: column;
+  }
+  .button-select-area{
+    justify-content: flex-start;
+    display: flex;
+    height: 40rpx;
+    width: 100%;
+  }

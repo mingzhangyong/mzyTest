@@ -1,0 +1,46 @@
+.sku-view{
+  font-size: 22rpx;
+  margin-top: 50rpx;
+   display: flex;
+  flex-direction: column;
+}
+
+.sku-container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 10%;
+    box-sizing: border-box;
+}
+.sku-title{
+  font-size: 32rpx;
+  color: #323232;
+   font-family:微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu ;
+}
+.sku-other{
+  font-size: 26rpx;
+  color: #323232;
+   font-family:微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu ;
+   margin-top: 18rpx;
+}
+.img-sku-title{
+  width: 25rpx;
+  height: 25rpx;
+}
+.view-sku-title{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.tv-zhaoshang{
+  color: red;
+  font-size: 26rpx;
+  padding-right: 6rpx;
+}
+.proxy-to-needs{
+   display: flex;
+  flex-direction: row;
+  align-items: center;
+}

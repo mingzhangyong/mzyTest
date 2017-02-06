@@ -1,0 +1,48 @@
+{
+  "pages":[
+    "pages/zhongbiao/zhongbiao",
+    "pages/logs/logs",
+    "pages/yibao/yibao",
+    "pages/detail/detail"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "中标医保查询",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [{
+      "pagePath": "pages/zhongbiao/zhongbiao",
+      "iconPath": "image/action.png",
+      "selectedIconPath": "image/action.png",
+      "text": "中标"
+    }, {
+     "pagePath": "pages/logs/logs",
+      "iconPath": "image/action.png",
+      "selectedIconPath": "image/action.png",
+      "text": "医保"
+    }, {
+     "pagePath": "pages/yibao/yibao",
+      "iconPath": "image/action.png",
+      "selectedIconPath": "image/action.png",
+      "text": "CFDA"
+    }, {
+     "pagePath": "pages/logs/logs",
+      "iconPath": "image/action.png",
+      "selectedIconPath": "image/action.png",
+      "text": "基药"
+    }]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
+}

@@ -1,0 +1,49 @@
+<view class="sku-container">
+<loading hidden="{{hidden}}" >
+    加载中...
+  </loading> 
+
+<text class="button-select-area" bindtap="selectArea">选择地区</text>
+
+<scroll-view hidden="{{hideArea}}" scroll-y="true" style="height: 100px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+	<view class="radio-group" >
+		<label wx:for="{{areas}}" wx:for-item="area">
+			<text bindtap="selectAreaOk" data-areaId="{{area.id}}">{{area.name}}</text> 
+			<icon wx:if="{{area.isSelect}}" type="success" size="10"/> 
+			<icon wx:else type="circle" size="10"/>
+		</label>
+	</view>
+<!--<radio-group class="radio-group" bindchange="radioChange">
+  <label wx:for="{{areas}}" wx:for-item="area">
+    <radio value="{{area.name}}" checked="{{area.checked}}">{{area.name}}</radio>
+  </label>
+</radio-group>-->
+</scroll-view>
+
+
+
+
+
+
+  <block  wx:for="{{skus}}" wx:for-item="sku">
+    <view class="sku-view">
+        <view class="view-sku-title">
+            <text class="sku-title">{{sku.name}}</text>
+            <navigator url="../detail/detail?slug={{sku.slug}}">
+                <view bindtap="toDetail" wx:if="{{sku.related_skus_num > 0}}" class="proxy-to-needs">
+                    <text class="tv-zhaoshang">招商中</text>
+                    <image class="img-sku-title" src="../../image/proxy_to_needs.png"></image>
+                </view>
+            </navigator>
+        </view>
+        <text class="sku-other">规格:{{sku.specs}}</text>
+        <text class="sku-other">剂型:{{sku.dosage_form}}</text>
+        <text class="sku-other">厂家:{{sku.factory}}</text>
+    </view>
+  </block >
+  <view class="view-get-more" hidden="{{getMore}}">
+  <image class="gifDemo" src="../../image/gifview.gif"></image>
+    <!--<button  loading="true" class="text-get-more"></button>-->
+    <text class="text-get-more">心急吃不到热豆腐...</text>
+  </view>
+</view>

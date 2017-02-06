@@ -1,0 +1,5 @@
+<!--logs.wxml-->
+<view class="container log-list">
+    <text class="log-item">传过来的slug：
+     {{message}}</text>
+</view>
