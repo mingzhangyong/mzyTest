@@ -51,6 +51,7 @@ Page({
      var selectAreaId = event.target.dataset.areaid;
      var that = this
      areaId = selectAreaId
+     page = 1
      for(var i = 0;i<this.data.areas.length;i++){
        if(this.data.areas[i].id==selectAreaId){
          this.data.areas[i].isSelect=true
