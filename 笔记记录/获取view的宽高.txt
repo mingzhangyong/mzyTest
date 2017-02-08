@@ -1,6 +1,0 @@
-在onCreate的时候使用 mView.getHight();得到的是0；
-
-要获取到view的宽高可以用下面的方法：
-
-ViewGroup.LayoutParams lp = mView.getLayoutParams();
-int hight = lp.height;
