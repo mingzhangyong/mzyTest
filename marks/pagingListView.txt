@@ -1,0 +1,100 @@
+在android studio中的 build.gradle（Module:app）文件中添加如下代码。
+
+compile 'com.github.nicolasjafelle:paginglistview:1.2'
+
+
+例如：
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.2.1'
+    compile 'com.github.nicolasjafelle:paginglistview:1.2'
+    compile 'com.google.android.gms:play-services-appindexing:8.1.0'
+    compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.avast:android-styled-dialogs:2.3.3'
+
+}
+
+然后使用android studio 同步代码（整个过程应该就是导入包）；
+
+①资源文件定义PagingListViwe
+		<com.paging.listview.PagingListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/mypage"
+            >
+        </com.paging.listview.PagingListView>
+		
+②建立adapter，需要继承PagingBaseAdapter；
+使用时，不用向adapter传递list参数，因为在PagingBaseAdapter中已经封装了一个list----itme；在重写adapter方法的时候直接这样用：
+	@Override
+    public int getCount() {
+        return items.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return items.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+getView自己再写。
+
+③PagingListView的使用
+		myPagingListViewAdapter = new MyPagingListViewAdapter(this);
+        pagingListView.setAdapter(myPagingListViewAdapter);
+        pagingListView.setOverScrollMode(View.OVER_SCROLL_NEVER);
+        pagingListView.setHasMoreItems(true);
+        pagingListView.setPagingableListener(new PagingListView.Pagingable() {
+            @Override
+            public void onLoadMoreItems() {
+                Log.i("mzy", "i am at bottom");
+                needMore();
+            }
+        });
+当list滑动到底部的时候就会出发onLoadMoreItems()，然后加载新的list:
+
+	private void needMore() {
+
+        Log.i("mzy", "i == " + i);
+        if (i == 0) {
+            pagingListView.onFinishLoading(true, list);
+        } else {
+            handler.sendEmptyMessageDelayed(0, 500);
+        }
+        i++;
+    }
+	
+	Handler handler = new Handler(){
+
+        @Override
+        public void handleMessage(Message msg) {
+            pagingListView.onFinishLoading(true, list2);
+        }
+    };
+每次滑动到底部的时候就获得一个list2，故意延迟半秒是为了显示加载的过程。
+
+pagingListView.onFinishLoading(true, list2)注解
+
+第一个参数：判断是否还可以继续往下拉，设为true则可以继续往下拉，否则不能；
+第二个参数：在方法onFinishLoading中，实现了在原来list后面继续添加item，从而使得list可以一直加载
+
+这样一个list一个list的加载实现了页面的一页一页的加载的效果。
+
+
+
+pagingListView 刷新方法
+
+private void reload() {
+        Log.i("mzy","reload");
+        page = 1;
+        sku = null;
+        if(! mineAdapter.isEmpty()){
+            mineAdapter.removeAllItems();
+        }
+        lv.setHasMoreItems(true);
+
+    }

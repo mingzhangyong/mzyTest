@@ -1,0 +1,37 @@
+在listview的adapter中使用一个 ViewHolder 类来实现组件的复用，提高内存使用。
+
+
+private class ViewHolder{
+        private TextView txt_name;
+        private TextView txt_abstract;
+        private TextView txt_hot;
+        private RelativeLayout rel_channel_subscribe;
+        private ImageView img_logo;
+    }
+
+ViewHolder holder;
+holder.img_logo = (ImageView) convertView.findViewById(R.id.img_channel_fragment_logo);
+
+
+
+二、结合ButterKnife使用。
+
+public static class ViewHolder {
+        @Bind(R.id.pic)
+        ImageView pic;
+        @Bind(R.id.desc)
+        TextView desc;
+        @Bind(R.id.title)
+        TextView title;
+        @Bind(R.id.select_item)
+        ImageView selectItem;
+
+        public ViewHolder(View view) {
+            ButterKnife.bind(this, view);
+        }
+    }
+使用的时候把convertView传递进去就可以了。
+
+	convertView = mInflater.inflate(R.layout.list_item_pub_channel, null);
+        holder = new ViewHolder(convertView);
+        convertView.setTag(holder);

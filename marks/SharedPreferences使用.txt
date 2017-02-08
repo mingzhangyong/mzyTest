@@ -1,0 +1,14 @@
+SharedPreferences 速度快。但是不宜存储大量数据。
+
+1.	private SharedPreferences sp;
+
+
+2.	sp = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
+
+3. 	SharedPreferences.Editor editor = sp.edit();
+    editor .putString("mao","帅气");
+    editor.putInt("age",24);
+    editor.apply();					//不要漏掉
+		
+4.	sp.getInt("age", 0)
+	sp.getString("mao", "臭逼")  //后面一个参数是没有获取到时的默认值

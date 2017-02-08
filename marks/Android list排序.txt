@@ -1,0 +1,65 @@
+在项目中我们难免要遇到需要将list的数据重新排序的问题。这里做一个笔记，方便自己以后使用，如果网友有更好地方法希望可以赐教
+
+按类型分类
+
+一个频道list，其中分为新增的，订阅的，普通的。频道有个更新时间。
+
+排序要求：新增的 -> 订阅的 -> 普通的。且每一种里面都要根据更新时间排序
+
+思路：
+
+获取到全部频道（无序的）
+
+for遍历一遍，遍历时将频道分类，分别存入一个新的list里面。
+
+得到三个list   newChannelList   subChannelList   normalChannelList
+
+然后分别按照时间排序。
+
+private List<Channel> sortChannel(List<Channel> channelList) {
+        List<Channel> sortChannelList = new ArrayList<>();
+        List<Channel> newChannelList = new ArrayList<>();
+        List<Channel> subChannelList = new ArrayList<>();
+        List<Channel> normalChannelList = new ArrayList<>();
+
+        for (Channel c : channelList) {
+            if (null != c.getIsSub() && c.getIsSub()) {  //如果是已订阅则认为不为新增频道
+                c.setIsNew(false);
+            }
+
+            if (null != c.getIsNew() && c.getIsNew()) {
+                newChannelList.add(c);
+            } else if (null != c.getIsSub() && c.getIsSub()) {
+                subChannelList.add(c);
+            } else {
+                normalChannelList.add(c);
+            }
+
+        }
+        Collections.sort(newChannelList, comparator);
+        Collections.sort(subChannelList, comparator);
+        Collections.sort(normalChannelList, comparator);
+
+        if (!newChannelList.isEmpty()) sortChannelList.addAll(newChannelList);
+        if (!subChannelList.isEmpty()) sortChannelList.addAll(subChannelList);
+        if (!normalChannelList.isEmpty()) sortChannelList.addAll(normalChannelList);
+
+        return sortChannelList;
+    }
+
+    Comparator comparator = new Comparator<Channel>() {
+
+        @Override
+        public int compare(Channel c1, Channel c2) {
+            if (stringToLong(c1.getUpdateTime()) > stringToLong(c2.getUpdateTime())) {
+
+                return -1;
+            }
+            if (stringToLong(c1.getUpdateTime()) == stringToLong(c2.getUpdateTime())) {
+                return 0;
+            }
+            return 1;
+        }
+    };
+
+
