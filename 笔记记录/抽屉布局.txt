@@ -1,0 +1,31 @@
+CoordinatorLayout和AppBarLayout结合使用实现抽屉式布局。可以将组件“推出”屏幕外再“拉出来”.
+
+使用：
+
+①布局格式
+
+<CoordinatorLayout>
+	<AppBarLayout>
+		< 需要被拉伸压缩的组件
+		  app:layout_scrollFlags="scroll|enterAlways"/>
+
+		< 不被拉伸压缩的组件  />
+	</AppBarLayout>
+	
+	< 抽屉的内容，或者叫把手。即需要占据屏幕显示内容的view，通常是recycleView 
+	  app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+</CoordinatorLayout>
+
+关于layout_scrollFlags：
+scroll: 所有想滚动出屏幕的view都需要设置这个flag， 没有设置这个flag的view将被固定在屏幕顶部。
+enterAlways: 设置这个flag时，向下的滚动都会导致该view变为可见，启用快速“返回模式”。
+enterAlwaysCollapsed: 当你的视图已经设置minHeight属性又使用此标志时，你的视图只能已最小高度进入，只有当滚动视图到达顶部时才扩大到完整高度。
+exitUntilCollapsed: 滚动退出屏幕，最后折叠在顶端。
+
+关于layout_behavior：
+
+
+
+
+http://blog.csdn.net/xyz_lmn/article/details/48055919    这个博客写的很清楚

@@ -82,12 +82,12 @@ var getSkus = function (that,areaId) {
         success: function(res) {
           console.log("success")
           var skus = that.data.skus
-          for(var i = 0;i<res.data.results.length;i++){
-            skus.push(res.data.results[i])
-          }
-          // skus.concat(res.data.results);
+          // for(var i = 0;i<res.data.results.length;i++){
+          //   skus.push(res.data.results[i])
+          // }
+          var mySkus = skus.concat(res.data.results);
           that.setData({
-            skus:skus,
+            skus:mySkus,
             hidden:true,
             areas:that.data.areas
           });

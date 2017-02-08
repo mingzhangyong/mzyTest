@@ -1,0 +1,34 @@
+在android studio中的 build.gradle（Module:app）文件中添加如下代码。
+
+compile 'com.jakewharton:butterknife:7.0.1'
+
+
+例如：
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.2.1'
+    compile 'com.github.nicolasjafelle:paginglistview:1.2'
+    compile 'com.google.android.gms:play-services-appindexing:8.1.0'
+    compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.avast:android-styled-dialogs:2.3.3'
+
+}
+
+然后使用android studio 同步代码（整个过程应该就是导入包）；
+
+现在每次需要调用xml文件中的组件时，不用再findViewById了。
+
+用法：
+    @Bind(R.id.list_item_img)
+    ImageView imageView;
+
+    @Bind(R.id.list_item_text)
+    TextView textView;
+
+①在申明的时候就确定了组件id。
+
+②再原本需要定义组件的地方添加映射：
+	ButterKnife.bind(this, itemView);
+
+如果这些组件是在 其他View里面加载的在使用时需要第二个参数，例如adapter里面。如果不需要，可以直接传一个参数this即可。例如activity里面。

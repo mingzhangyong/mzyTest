@@ -1,0 +1,43 @@
+adapter.notifyDataSetChanged();
+
+在Android开发中该方法会经常使用到。最近项目中发现一个问题。
+
+即 adapter.notifyDataSetChanged() 方法是有延迟的。
+
+举个例子：
+
+public class MainActivity extends AppCompatActivity {
+    private ListView listView;
+
+    private List<Integer> items = new ArrayList<>();
+
+    private MyAdapter adapter;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        listView = (ListView) findViewById(R.id.list);
+        for (int i = 0; i <10 ; i++) {
+            items.add(i);
+        }
+        adapter = new MyAdapter(this,items);
+        listView.setAdapter(adapter);
+
+    }
+
+    public void onClick(View view){
+        adapter.removeTest();
+        adapter.notifyDataSetChanged();
+        adapter.removeTest();
+    }
+}
+在onClick方法中，1.对adapter进行删除操作（随意删掉一个）
+		 2.adapter监听更新
+		 3.再删掉一个。
+
+运行程序，我们会发现，实际上被删掉了2个。也就是，adapter.notifyDataSetChanged();虽然写在两次删除中间，但是会在两次删除之后才执行。
+（如果不加adapter.notifyDataSetChanged();这一句，是不会刷新listview的）
+
+谨记。
+
