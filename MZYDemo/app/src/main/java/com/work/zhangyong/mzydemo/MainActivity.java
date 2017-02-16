@@ -35,6 +35,7 @@ import com.work.zhangyong.mzydemo.gallery.GalleryActivity;
 import com.work.zhangyong.mzydemo.myTest.ImageTest;
 import com.work.zhangyong.mzydemo.toolbar.ToolbarActivity;
 import com.work.zhangyong.mzydemo.viewPager.ViewPagerActivity;
+import com.work.zhangyong.mzydemo.wuziqi.WuziqiActivity;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -200,6 +201,11 @@ public class MainActivity extends ToolbarActivity {
                     }
                     case 12:{
                         Intent i = new Intent(MainActivity.this, AnimatorActivity.class);
+                        startActivity(i);
+                        break;
+                    }
+                    case 13:{
+                        Intent i = new Intent(MainActivity.this, WuziqiActivity.class);
                         startActivity(i);
                         break;
                     }

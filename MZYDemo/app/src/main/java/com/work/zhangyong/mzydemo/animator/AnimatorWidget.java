@@ -1,6 +1,10 @@
 package com.work.zhangyong.mzydemo.animator;
 
+import android.animation.Animator;
+import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
+import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -57,7 +61,7 @@ public class AnimatorWidget extends Activity {
     };
 
     private void myAnimator() {
-        float y = button.getHeight()/2;
+        /*float y = button.getHeight()/2;
         for(int i = 0;i<list.size();i++){
             list.get(i).setVisibility(View.VISIBLE);
             //平移动画
@@ -70,7 +74,7 @@ public class AnimatorWidget extends Activity {
             objectAnimator1.setDuration(1000);
             objectAnimator1.start();
             y = y + list.get(i).getHeight();
-        }
+        }*/
         /*button2.setVisibility(View.VISIBLE);
         //平移动画
         ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(button2, "translationY", 0f, button.getHeight());
@@ -81,5 +85,51 @@ public class AnimatorWidget extends Activity {
         ObjectAnimator objectAnimator1 = ObjectAnimator.ofFloat(button2, "alpha", 0f,0.5f);
         objectAnimator1.setDuration(100);
         objectAnimator1.start();*/
+
+
+        button2.setVisibility(View.VISIBLE);
+        //平移动画
+        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(button2, "translationX", 0f, 60);
+        objectAnimator.setDuration(100);
+//        objectAnimator.setRepeatCount(3);
+
+        ObjectAnimator objectAnimator1 = ObjectAnimator.ofFloat(button2, "translationY", 0, 60f);
+        objectAnimator1.setDuration(100);
+//        objectAnimator1.setRepeatCount(3);
+
+
+        /*PropertyValuesHolder p1 = PropertyValuesHolder.ofFloat("translationX", 0f, 60);
+        PropertyValuesHolder p2 = PropertyValuesHolder.ofFloat("translationY", 0, 60);
+        ObjectAnimator objectAnimator = ObjectAnimator.ofPropertyValuesHolder(button2,p1,p2).setDuration(2000);
+        objectAnimator.setRepeatCount(ValueAnimator.INFINITE);
+        objectAnimator.start();*/
+
+        final AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.setDuration(2000);
+        animatorSet.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animator) {
+                animatorSet.start();
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animator) {
+
+            }
+        });
+//        animatorSet.playSequentially(objectAnimator,objectAnimator1);
+        animatorSet.playSequentially(objectAnimator,objectAnimator1);
+        animatorSet.start();
+
     }
 }

@@ -32,6 +32,7 @@
         <activity android:name=".myTest.ImageTest" />
         <activity android:name=".animator.AnimatorActivity"/>
         <activity android:name=".animator.AnimatorWidget"/>
+        <activity android:name=".wuziqi.WuziqiActivity"/>
     </application>
 
 </manifest>
