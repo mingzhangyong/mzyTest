@@ -23,6 +23,11 @@ import java.util.List;
 
 public class WuziqiPanel extends View {
 
+    public interface OnChanged{
+        void onChanged(List<Point> whiteArray, List<Point> blackArray);
+    }
+
+
     private int mPanelWidth;
     private float mLineHeight ;
     private int MAX_LINE = 10;
@@ -101,11 +106,22 @@ public class WuziqiPanel extends View {
         checkIfWIn();
     }
 
-    private void checkIfWIn() {
+    public void checkIfWIn(OnChanged onChanged) {
+        onChanged.onChanged(mWhiteArray,mBlackArray);
          if(checkWhiteVertical(mWhiteArray)){
              isGameOver = true;
-             Toast.makeText(getContext(),"游戏结束",Toast.LENGTH_LONG);
+             Toast.makeText(getContext(),"游戏结束",Toast.LENGTH_LONG).show();
          }
+    }
+    public void checkIfWIn() {
+        if(checkWhiteVertical(mWhiteArray) || checkWhiteHorizontal(mWhiteArray) || checkWhiteXie1(mWhiteArray) || checkWhiteXie2(mWhiteArray)){
+            isGameOver = true;
+            Toast.makeText(getContext(),"小呆胜利！",Toast.LENGTH_LONG).show();
+        }
+        if(checkWhiteVertical(mBlackArray) || checkWhiteHorizontal(mBlackArray) || checkWhiteXie1(mBlackArray) || checkWhiteXie2(mBlackArray)){
+            isGameOver = true;
+            Toast.makeText(getContext(),"小萌胜利！",Toast.LENGTH_LONG).show();
+        }
     }
 
     private boolean checkWhiteVertical(List<Point> points) {
@@ -125,6 +141,99 @@ public class WuziqiPanel extends View {
 
             for (int j = 1; j <5 ; j++) {
                 if(points.contains(new Point(x,y-j))){
+                    count++;
+                }else{
+                    break;
+                }
+            }
+
+            if(count == 5) {
+                Log.i("mzy","win ?");
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean checkWhiteHorizontal(List<Point> points) {
+        for (int i = 0; i <points.size() ; i++) {
+            Point p = points.get(i);
+            int x = p.x;
+            int y = p.y;
+
+            int count = 1;
+            for (int j = 1; j <5 ; j++) {
+                if(points.contains(new Point(x+j,y))){
+                    count++;
+                }else{
+                    break;
+                }
+            }
+
+            for (int j = 1; j <5 ; j++) {
+                if(points.contains(new Point(x-j,y))){
+                    count++;
+                }else{
+                    break;
+                }
+            }
+
+            if(count == 5) {
+                Log.i("mzy","win ?");
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean checkWhiteXie1(List<Point> points) {
+        for (int i = 0; i <points.size() ; i++) {
+            Point p = points.get(i);
+            int x = p.x;
+            int y = p.y;
+
+            int count = 1;
+            for (int j = 1; j <5 ; j++) {
+                if(points.contains(new Point(x+j,y-j))){
+                    count++;
+                }else{
+                    break;
+                }
+            }
+
+            for (int j = 1; j <5 ; j++) {
+                if(points.contains(new Point(x-j,y+j))){
+                    count++;
+                }else{
+                    break;
+                }
+            }
+
+            if(count == 5) {
+                Log.i("mzy","win ?");
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean checkWhiteXie2(List<Point> points) {
+        for (int i = 0; i <points.size() ; i++) {
+            Point p = points.get(i);
+            int x = p.x;
+            int y = p.y;
+
+            int count = 1;
+            for (int j = 1; j <5 ; j++) {
+                if(points.contains(new Point(x+j,y+j))){
+                    count++;
+                }else{
+                    break;
+                }
+            }
+
+            for (int j = 1; j <5 ; j++) {
+                if(points.contains(new Point(x-j,y-j))){
                     count++;
                 }else{
                     break;
