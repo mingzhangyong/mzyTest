@@ -3,8 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <com.work.zhangyong.mzydemo.wuziqi.WuziqiPanel
+        android:id="@+id/wuziqi"
         android:layout_centerInParent="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="check"
+        android:id="@+id/check"
+        />
 
 </RelativeLayout>

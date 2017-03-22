@@ -8,6 +8,7 @@
     <com.work.zhangyong.mzydemo.MZYList
         android:layout_below="@+id/toolbar"
         android:id="@+id/list_view"
+        android:layoutAnimation="@anim/anim_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <TextView

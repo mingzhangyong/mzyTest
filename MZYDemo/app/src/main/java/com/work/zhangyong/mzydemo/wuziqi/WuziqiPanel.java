@@ -42,6 +42,10 @@ public class WuziqiPanel extends View {
     private boolean isGameOver;
     private boolean isWhiteWin;
 
+    public interface OnGameOver{
+        void gameOver(boolean isGameOver);
+    }
+
     public WuziqiPanel(Context context, AttributeSet attrs) {
         super(context, attrs);
         setBackgroundColor(0x44ff0000);
@@ -101,11 +105,18 @@ public class WuziqiPanel extends View {
         checkIfWIn();
     }
 
+    private OnGameOver onGameOver;
+
     private void checkIfWIn() {
+        onGameOver.gameOver(checkWhiteVertical(mWhiteArray));
          if(checkWhiteVertical(mWhiteArray)){
              isGameOver = true;
              Toast.makeText(getContext(),"游戏结束",Toast.LENGTH_LONG);
          }
+    }
+
+    public void checkIfWIn(OnGameOver onGameOver){
+        this.onGameOver = onGameOver;
     }
 
     private boolean checkWhiteVertical(List<Point> points) {

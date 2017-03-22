@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/get_http"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="get http"
+        />
+    <Button
+        android:id="@+id/doPost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="doPost"
+        />
+    <Button
+        android:id="@+id/doPostFile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="doPostFile"
+        />
+    <Button
+        android:id="@+id/doPostStringAndFile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="doPostStringAndFile"
+        />
+    <Button
+        android:id="@+id/doDownload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="doDownload"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_get"
+        />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/img_get"
+        />
+</LinearLayout>

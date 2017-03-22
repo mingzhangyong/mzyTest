@@ -33,6 +33,7 @@ import com.work.zhangyong.mzydemo.dialog.MyDialog;
 import com.work.zhangyong.mzydemo.divider.TBActivity;
 import com.work.zhangyong.mzydemo.gallery.GalleryActivity;
 import com.work.zhangyong.mzydemo.myTest.ImageTest;
+import com.work.zhangyong.mzydemo.okhttp.OkhttpActivity;
 import com.work.zhangyong.mzydemo.toolbar.ToolbarActivity;
 import com.work.zhangyong.mzydemo.viewPager.ViewPagerActivity;
 import com.work.zhangyong.mzydemo.wuziqi.WuziqiActivity;
@@ -53,6 +54,15 @@ public class MainActivity extends ToolbarActivity {
     ImageView img;
     List a;
 
+
+
+    int[] arry = {4,3,6,1,7,17,5};
+    int low = 0;
+    int hight = arry.length-1;
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +71,7 @@ public class MainActivity extends ToolbarActivity {
         listView = (MZYList) findViewById(R.id.list_view);
 
 
+        
         if (null != a && a.size() > 0) {
             Log.i("mzy", " im ok ");
         } else {
@@ -209,9 +220,59 @@ public class MainActivity extends ToolbarActivity {
                         startActivity(i);
                         break;
                     }
+                    case 14:{
+                        fastSrot(arry,low,hight);
+                        break;
+                    }
+                    case 15:{
+                        Intent i = new Intent(MainActivity.this, OkhttpActivity.class);
+                        startActivity(i);
+                        break;
+                    }
                 }
             }
         });
+    }
+
+    /**
+     * 使用快速排序算法对数组排序
+     * @param arry
+     */
+    private void fastSrot(int[] arry,int low,int hight) {
+        int start = low;
+        int end = hight;
+        int key = (arry[low]+arry[hight])/2;
+
+        while (end>start){
+            Log.i("mzymzy","end ? "+end + "  START ? "+start+" key ? "+key);
+            while (end>start && arry[end]>=key){ //从后往前比。
+                end -- ;
+            }
+            if(arry[end]<key){
+                int temp = arry[end];
+                arry[end] = arry[start];
+                arry[start] = temp;
+            }
+
+            while (start<end && arry[start]<=key){ //从前往后比较
+                start ++;
+            }
+            if(arry[start]>key){
+                int temp = arry[start];
+                arry[start] = arry[end];
+                arry[end] = temp;
+            }
+        }
+        //此时第一次比较完成，在key的左边都是比key小的，右边都是比key大的
+
+
+        if(start>low) fastSrot(arry,low,start -1 );
+        if(end<hight) fastSrot(arry,end+1,hight);
+
+        Log.i("mzymzy", " -------------------------------------------------------- ");
+        for(int a:arry){
+            Log.i("mzymzy","arry a = "+a);
+        }
     }
 
     @Override

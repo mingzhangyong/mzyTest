@@ -1,6 +1,8 @@
 package com.work.zhangyong.mzydemo.wuziqi;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.work.zhangyong.mzydemo.R;
 import com.work.zhangyong.mzydemo.toolbar.ToolbarActivity;
@@ -18,5 +20,19 @@ public class WuziqiActivity extends ToolbarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        WuziqiPanel wuziqiPanel = (WuziqiPanel) findViewById(R.id.wuziqi);
+        Button button = (Button) findViewById(R.id.check);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        wuziqiPanel.checkIfWIn(new WuziqiPanel.OnGameOver() {
+            @Override
+            public void gameOver(boolean isGameOver) {
+
+            }
+        });
     }
 }
